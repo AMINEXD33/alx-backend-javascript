@@ -4,7 +4,7 @@ export default class HolbertonCourse {
     HolbertonCourse.verifierLength(length);
     HolbertonCourse.verifierStudents(students);
     this._name = name;
-    this._lenght = length;
+    this._length = length;
     this._students = students;
   }
 
@@ -42,8 +42,8 @@ export default class HolbertonCourse {
   }
 
   set length(newLength) {
-    HolbertonCourse.verifierLength(null, newLength);
-    this._lenght = newLength;
+    HolbertonCourse.verifierLength(newLength);
+    this._length = newLength;
   }
 
   get length() {
@@ -51,7 +51,7 @@ export default class HolbertonCourse {
   }
 
   set students(newStudents) {
-    HolbertonCourse.verifierStudents(null, null, newStudents);
+    HolbertonCourse.verifierStudents(newStudents);
     this._students = newStudents;
   }
 
