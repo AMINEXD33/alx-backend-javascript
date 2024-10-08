@@ -3,15 +3,14 @@ export default function createInt8TypedArray(
   position,
   value,
 ) {
-  if (length == 0) {
+  if (length === 0) {
     return [];
   }
   if (position >= length) {
     throw new Error('Position outside range');
   }
-
-  const arrBuff = new Int8Array(length);
+  const arrBuffer = new ArrayBuffer(length);
+  const arrBuff = new Int8Array(new ArrayBuffer(length));
   arrBuff[position] = value;
-
-  return arrBuff;
+  return arrBuffer;
 }
