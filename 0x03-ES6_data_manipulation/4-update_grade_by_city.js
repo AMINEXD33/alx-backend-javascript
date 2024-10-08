@@ -6,6 +6,9 @@ export default function updateStudentGradeByCity(
   if (!Array.isArray(array)) {
     return [];
   }
+  if (!Array.isArray(newGrades)) {
+    return array;
+  }
   const newList = [];
   array.forEach((student) => {
     const studentId = student.id;
