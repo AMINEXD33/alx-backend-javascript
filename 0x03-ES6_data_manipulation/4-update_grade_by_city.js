@@ -22,8 +22,8 @@ export default function updateStudentGradeByCity(
       if (!actionPerformed) {
         dummyObj.grade = 'N/A';
       }
+      newList.push(dummyObj);
     }
-    newList.push(dummyObj);
   });
   return newList;
 }
