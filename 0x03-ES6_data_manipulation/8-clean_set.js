@@ -1,23 +1,24 @@
 export default function cleanSet(set, startString) {
-  let result = "";
   if (!set || !startString || typeof startString !== 'string') {
     return '';
   }
   if (startString.trim() === '') {
     return '';
   }
+
+  let result = '';
   for (const element of set) {
-    if (typeof element === 'string') {
-      if (element.startsWith(startString)) {
-        const substartString = element.split(startString.charAt(startString.length - 1), 2);
-        if (result === "" && substartString[1] !== null) {
-          result = '';
-          result += substartString[1];
-        } else if (substartString[1] !== null) {
-          result += `-${substartString[1]}`;
+    if (typeof element === 'string' && element.startsWith(startString)) {
+      const substring = element.slice(startString.length);
+      if (substring) {
+        if (result) {
+          result += `-${substring}`;
+        } else {
+          result = substring;
         }
       }
     }
   }
+
   return result;
 }
