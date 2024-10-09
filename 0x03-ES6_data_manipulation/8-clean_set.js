@@ -1,5 +1,5 @@
 export default function cleanSet(set, startString) {
-  let result = null;
+  let result = "";
   if (!set || !startString || typeof startString !== 'string') {
     return '';
   }
@@ -10,7 +10,7 @@ export default function cleanSet(set, startString) {
     if (typeof element === 'string') {
       if (element.startsWith(startString)) {
         const substartString = element.split(startString.charAt(startString.length - 1), 2);
-        if (result === null && substartString[1] !== null) {
+        if (result === "" && substartString[1] !== null) {
           result = '';
           result += substartString[1];
         } else if (substartString[1] !== null) {
