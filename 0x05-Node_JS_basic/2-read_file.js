@@ -8,6 +8,9 @@ function parser(data) {
   const labels = lines[0].split(",");
   for (let line = 1; line < lines.length; line++) {
     let tmp = {};
+    if (lines[line].trim() === ""){
+        continue;
+    }
     let linesSplit = lines[line].split(",");
     for (let var_ = 0; var_ < lines[line].length; var_++) {
       if (labels[var_] === undefined || linesSplit[var_] === undefined) {
