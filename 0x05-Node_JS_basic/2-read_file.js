@@ -77,7 +77,6 @@ function countStudents(path) {
       }
       process.stdout.write("\n");
     }
-    process.stdout.write("\n");
   } catch (err) {
     throw new Error("Cannot load the database");
   }
