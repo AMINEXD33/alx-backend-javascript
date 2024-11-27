@@ -1,42 +1,90 @@
-const assert = require('assert');
-const mocha = require('mocha');
+const { describe } = require("node:test");
+const calculateNumber = require("./0-calcul");
+const assert = require("assert");
 
-const calculateNumber = require('./0-calcul');
+describe("calculateNumber", function () {
+  describe("PositiveInts", function () {
+    it("should round any number befor adding", function () {
+      const val1 = calculateNumber(12, 12);
+      const val2 = calculateNumber(12, 1);
+      const val3 = calculateNumber(1, 121);
+      const val4 = calculateNumber(0, 12);
+      const val5 = calculateNumber(0, 0);
 
-describe('calculateNumber', () => {
-  it('should return sum of integers', () => {
-    assert.strictEqual(calculateNumber(1, 3), 4);
-    assert.strictEqual(calculateNumber(1, -1), 0);
-    assert.strictEqual(calculateNumber(1, -3), -2);
-  });
-
-  it('should round floats', () => {
-    assert.strictEqual(calculateNumber(1, 3.7), 5);
-    assert.strictEqual(calculateNumber(1.2, 3.7), 5);
-    assert.strictEqual(calculateNumber(1.5, 3.7), 6);
-    assert.strictEqual(calculateNumber(0.1, 0), 0);
-    assert.strictEqual(calculateNumber(1.4, -4.5), -3);
-  });
-
-  it('should return the rounded number if only one is provided', () => {
-    assert.strictEqual(calculateNumber(2), 2);
-    assert.strictEqual(calculateNumber(2.7), 3);
-  });
-
-  it('should cast non-numbers into numbers', () => {
-    assert.strictEqual(calculateNumber(true, '3'), 4);
-    assert.strictEqual(calculateNumber(1, '3.7'), 5);
-    assert.strictEqual(calculateNumber('1.2', 3.7), 5);
-  });
-
-  it('should throw typeerror if either param cannot be coerced to a number', () => {
-    assert.throws(() => calculateNumber('hello'), {
-      name: 'TypeError',
-      message: 'Parameters must be numbers'
+      assert.strictEqual(val1, 12 + 12);
+      assert.strictEqual(val2, 12 + 1);
+      assert.strictEqual(val3, 1 + 121);
+      assert.strictEqual(val4, 0 + 12);
+      assert.strictEqual(val5, 0);
     });
-    assert.throws(() => calculateNumber(1.2, 'dog'), {
-      name: 'TypeError',
-      message: 'Parameters must be numbers'
+  });
+  describe("NegativeInts", function () {
+    it("should round any number befor adding", function () {
+      const val1 = calculateNumber(-12, -12);
+      const val2 = calculateNumber(-12, -1);
+      const val3 = calculateNumber(-1, -121);
+      const val4 = calculateNumber(-0, -12);
+      const val5 = calculateNumber(0, 0);
+
+      assert.strictEqual(val1, -12 + -12);
+      assert.strictEqual(val2, -12 + -1);
+      assert.strictEqual(val3, -1 + -121);
+      assert.strictEqual(val4, 0 + -12);
+      assert.strictEqual(val5, 0);
+    });
+  });
+  describe("PositiveFloats", function () {
+    it("should round any number befor adding", function () {
+      const val1 = calculateNumber(12.34, 12.5663);
+      const val2 = calculateNumber(12.34, 1.5663);
+      const val3 = calculateNumber(1.34, 121.5663);
+      const val4 = calculateNumber(0.34, 12.5663);
+      const val5 = calculateNumber(0, 0);
+
+      assert.strictEqual(val1, 12 + 13);
+      assert.strictEqual(val2, 12 + 2);
+      assert.strictEqual(val3, 1 + 122);
+      assert.strictEqual(val4, 0 + 13);
+      assert.strictEqual(val5, 0);
+    });
+  });
+  describe("NegativeFloats", function () {
+    it("should round any number befor adding", function () {
+      const val1 = calculateNumber(-12.34, -12.5663);
+      const val2 = calculateNumber(-12.34, -1.5663);
+      const val3 = calculateNumber(-1.34, -121.5663);
+      const val4 = calculateNumber(-0.34, -12.5663);
+      const val5 = calculateNumber(0, 0);
+
+      assert.strictEqual(val1, -12 + -13);
+      assert.strictEqual(val2, -12 + -2);
+      assert.strictEqual(val3, -1 + -122);
+      assert.strictEqual(val4, -0 + -13);
+      assert.strictEqual(val5, 0);
+    });
+  });
+
+  describe("Test errors", function () {
+    it("should raise error", function () {
+      const msg = "One of the args are not an int and can't be converted";
+      assert.throws(() => {
+        calculateNumber(12, "test");
+      }, Error);
+      assert.throws(() => {
+        calculateNumber("a", "");
+      }, Error);
+      assert.throws(() => {
+        calculateNumber(undefined, "test");
+      }, Error);
+      assert.throws(() => {
+        calculateNumber(12, undefined);
+      }, Error);
+      assert.throws(() => {
+        calculateNumber(12);
+      }, Error);
+      assert.throws(() => {
+        calculateNumber();
+      }, Error);
     });
   });
 });
