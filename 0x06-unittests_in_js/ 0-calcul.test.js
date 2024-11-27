@@ -1,6 +1,6 @@
 const { describe } = require("node:test");
 const calculateNumber = require("./0-calcul");
-const { assert } = require("console");
+const assert = require('assert');
 
 describe("calculateNumber", function () {
   describe("PositiveInts", function () {
@@ -11,11 +11,11 @@ describe("calculateNumber", function () {
       const val4 = calculateNumber(0, 12);
       const val5 = calculateNumber(0, 0);
 
-      assert.strictEqual(val1, 12 + 23);
-      assert(val2, 12 + 1);
-      assert(val3, 1 + 121);
-      assert(val4, 0 + 12);
-      assert(val5, 0);
+      assert.strictEqual(val1, (12 + 12));
+      assert.strictEqual(val2, (12 + 1));
+      assert.strictEqual(val3, (1 + 121));
+      assert.strictEqual(val4, (0 + 12));
+      assert.strictEqual(val5, (0));
     });
   });
   describe("NegativeInts", function () {
@@ -26,11 +26,11 @@ describe("calculateNumber", function () {
       const val4 = calculateNumber(-0, -12);
       const val5 = calculateNumber(0, 0);
 
-      assert(val1, -12 + -23);
-      assert(val2, -12 + -1);
-      assert(val3, -1 + -121);
-      assert(val4, -0 + -12);
-      assert(val5, 0);
+      assert.strictEqual(val1, (-12 + -12));
+      assert.strictEqual(val2, (-12 + -1));
+      assert.strictEqual(val3, (-1 + -121));
+      assert.strictEqual(val4, (0 + -12));
+      assert.strictEqual(val5, 0);
     });
   });
   describe("PositiveFloats", function () {
@@ -41,11 +41,11 @@ describe("calculateNumber", function () {
       const val4 = calculateNumber(0.34, 12.5663);
       const val5 = calculateNumber(0, 0);
 
-      assert(val1, 12 + 13);
-      assert(val2, 12 + 2);
-      assert(val3, 1 + 122);
-      assert(val4, 0 + 13);
-      assert(val5, 0);
+      assert.strictEqual(val1, (12 + 13));
+      assert.strictEqual(val2, (12 + 2));
+      assert.strictEqual(val3, (1 + 122));
+      assert.strictEqual(val4, (0 + 13));
+      assert.strictEqual(val5, 0);
     });
   });
   describe("NegativeFloats", function () {
@@ -56,11 +56,11 @@ describe("calculateNumber", function () {
       const val4 = calculateNumber(-0.34, -12.5663);
       const val5 = calculateNumber(0, 0);
 
-      assert(val1, -12 + -13);
-      assert(val2, -12 + -2);
-      assert(val3, -1 + -122);
-      assert(val4, -0 + -13);
-      assert(val5, 0);
+      assert.strictEqual(val1, (-12 + -13));
+      assert.strictEqual(val2, (-12 + -2));
+      assert.strictEqual(val3, (-1 + -122));
+      assert.strictEqual(val4, (-0 + -13));
+      assert.strictEqual(val5, 0);
     });
   });
 });
