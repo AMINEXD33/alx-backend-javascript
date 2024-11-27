@@ -63,4 +63,20 @@ describe("calculateNumber", function () {
       assert.strictEqual(val5, 0);
     });
   });
+
+  describe("Test errors", function () {
+    it("should raise error", function () {
+      const val1 = calculateNumber(12, 12);
+      const val2 = calculateNumber(12, 1);
+      const val3 = calculateNumber(1, 121);
+      const val4 = calculateNumber(0, 12);
+      const val5 = calculateNumber(0, 0);
+
+      assert.strictEqual(val1, (12 + 12));
+      assert.strictEqual(val2, (12 + 1));
+      assert.strictEqual(val3, (1 + 121));
+      assert.strictEqual(val4, (0 + 12));
+      assert.strictEqual(val5, (0));
+    });
+  });
 });
