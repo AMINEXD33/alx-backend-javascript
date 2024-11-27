@@ -11,7 +11,7 @@ describe("calculateNumber", function () {
       const val4 = calculateNumber(0, 12);
       const val5 = calculateNumber(0, 0);
 
-      assert(val1, 12 + 23);
+      assert.strictEqual(val1, 12 + 23);
       assert(val2, 12 + 1);
       assert(val3, 1 + 121);
       assert(val4, 0 + 12);
